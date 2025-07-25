@@ -1,35 +1,71 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 // Icons
 const ChevronLeftIcon = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
     <path d="m15 18-6-6 6-6" />
   </svg>
 );
 
 const ChevronRightIcon = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
     <path d="m9 18 6-6-6-6" />
   </svg>
 );
 
 const PlayIcon = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
     <polygon points="5,3 19,12 5,21" />
   </svg>
 );
 
 const PauseIcon = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
     <rect x="6" y="4" width="4" height="16" />
     <rect x="14" y="4" width="4" height="16" />
   </svg>
@@ -39,40 +75,40 @@ const PauseIcon = ({ className }) => (
 const cardData = [
   {
     id: 1,
-    imageUrl: "/public/image1.jpg",
+    imageUrl: "/image1.jpg",
     title: "Computer Network and Internet Protocol Certificate",
     description: "",
   },
   {
     id: 2,
-    imageUrl: "/public/image2.jpg",
+    imageUrl: "/image2.jpg",
     title: "C++ Mastery",
     description: "",
   },
   {
     id: 3,
-    imageUrl: "/public/image3.jpg",
+    imageUrl: "/image3.jpg",
     title: "MERN Stack Certificate",
     description: "",
   },
   {
     id: 4,
-    imageUrl: "/public/image4.jpg",
+    imageUrl: "/image4.jpg",
     title: "Python Training",
     description: "",
   },
   {
     id: 5,
-    imageUrl: "/public/image5.jpg",
+    imageUrl: "/image5.jpg",
     title: "CSS Training",
     description: "",
   },
   {
     id: 6,
-    imageUrl: "/public/image6.jpg",
+    imageUrl: "/image6.jpg",
     title: "Cloud Computing AWS",
     description: "",
-  }
+  },
 ];
 
 // Card Component
@@ -93,31 +129,32 @@ function Card({ card, index, activeIndex, totalCards }) {
     transition: {
       type: "spring",
       stiffness: 300,
-      damping: 30
-    }
+      damping: 30,
+    },
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="absolute w-96 h-72 md:w-[450px] md:h-80 lg:w-[500px] lg:h-[350px]"
-      style={{ transformStyle: 'preserve-3d' }}
+      style={{ transformStyle: "preserve-3d" }}
       animate={animate}
       initial={false}
     >
       <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
-        <img 
-          src={card.imageUrl} 
+        <img
+          src={card.imageUrl}
           alt={card.title}
           className="w-full h-full object-contain bg-white transition-transform duration-700 hover:scale-105"
           onError={(e) => {
             const target = e.target;
             target.onerror = null;
-            target.src = 'https://placehold.co/600x400/1e1e1e/ffffff?text=Certificate';
+            target.src =
+              "https://placehold.co/600x400/1e1e1e/ffffff?text=Certificate";
           }}
         />
         <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-          <motion.h3 
+          <motion.h3
             className="text-white text-base md:text-lg lg:text-xl font-bold mb-1 drop-shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isActive ? 1 : 0.8, y: isActive ? 0 : 10 }}
@@ -126,7 +163,7 @@ function Card({ card, index, activeIndex, totalCards }) {
             {card.title}
           </motion.h3>
           {card.description && (
-            <motion.p 
+            <motion.p
               className="text-gray-200 text-sm opacity-90 drop-shadow-md"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 10 }}
@@ -148,7 +185,9 @@ function Card({ card, index, activeIndex, totalCards }) {
 
 // Main Component
 export default function App() {
-  const [activeIndex, setActiveIndex] = useState(Math.floor(cardData.length / 2));
+  const [activeIndex, setActiveIndex] = useState(
+    Math.floor(cardData.length / 2)
+  );
   const [isPaused, setIsPaused] = useState(false);
   const autoplayIntervalRef = useRef(null);
   const autoplayDelay = 4000;
@@ -192,7 +231,6 @@ export default function App() {
   return (
     <div className="w-full max-w-8xl mx-auto p-6">
       <div className="bg-gradient-to-br from-slate-800 via-purple-800 to-slate-800 rounded-3xl p-8 shadow-2xl">
-        
         {/* Header */}
         <div className="text-center mb-8">
           <motion.div
@@ -209,15 +247,14 @@ export default function App() {
         </div>
 
         {/* Carousel Container */}
-        <div 
+        <div
           className="relative"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          
           {/* Main Carousel */}
           <div className="relative h-96 md:h-[450px] lg:h-[500px] flex items-center justify-center overflow-hidden">
-            <motion.div 
+            <motion.div
               className="w-full h-full flex items-center justify-center"
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
@@ -225,18 +262,18 @@ export default function App() {
               onDragEnd={onDragEnd}
             >
               {cardData.map((card, index) => (
-                <Card 
-                  key={card.id} 
-                  card={card} 
-                  index={index} 
-                  activeIndex={activeIndex} 
-                  totalCards={cardData.length} 
+                <Card
+                  key={card.id}
+                  card={card}
+                  index={index}
+                  activeIndex={activeIndex}
+                  totalCards={cardData.length}
                 />
               ))}
             </motion.div>
 
             {/* Navigation Arrows */}
-            <button 
+            <button
               onClick={goToPrev}
               className="absolute left-4 top-1/2 -translate-y-1/2 z-30 group"
             >
@@ -248,7 +285,7 @@ export default function App() {
               </div>
             </button>
 
-            <button 
+            <button
               onClick={goToNext}
               className="absolute right-4 top-1/2 -translate-y-1/2 z-30 group"
             >
@@ -263,7 +300,6 @@ export default function App() {
 
           {/* Bottom Controls */}
           <div className="flex items-center justify-center mt-6">
-            
             {/* Dots Navigation */}
             <div className="flex items-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full">
               {cardData.map((_, index) => (
@@ -286,8 +322,6 @@ export default function App() {
               ))}
             </div>
           </div>
-
-          
         </div>
       </div>
     </div>
